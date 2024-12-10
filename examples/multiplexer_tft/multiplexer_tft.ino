@@ -39,7 +39,7 @@ void setup(void) {
   tft.setRotation(0);                   // Set the rotation of the display (0 degrees)
   tft.setTextSize(3);                   // Set the text size on the display
 
-  digitalWrite(pullUpLine, HIGH);       // Set the pull-up line to HIGH, ensuring all displays are selected
+  digitalWrite(pullUpLine, HIGH);       // Set the pull-up line to HIGH, ensuring all displays are deselected
 
   // Display text on both displays by selecting them via the multiplexer
   for (int i = 0; i < 2; i++) {  // Loop through the two displays
