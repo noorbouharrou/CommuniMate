@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Resizer</title>
+</head>
+<body>
+  <h1>Afbeelding Resizer</h1>
+  
+  <form id="resizeForm" enctype="multipart/form-data">
+    <label for="image">Kies een afbeelding:</label>
+    <input type="file" id="image" name="image" accept="image/*" required><br><br>
+    
+    <label for="width">Breedte:</label>
+    <input type="number" id="width" name="width" required><br><br>
+
+    <label for="height">Hoogte:</label>
+    <input type="number" id="height" name="height" required><br><br>
+
+    <button type="submit">Resize Afbeelding</button>
+  </form>
+
+  <h2>Resized Afbeelding:</h2>
+  <img id="resizedImage" style="max-width: 100%; border: 1px solid #ccc;" alt="Resized Image"/>
+
+  <script src="app.js">
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+services:
+  tts-engine:
+    build: ./tts-engine
+    container_name: tts-engine
+    ports:
+      - "3001:3000"
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+  cropper-engine:
+    build: ./cropper-engine
+    container_name: cropper-engine
+    ports:
+      - "3002:3000"
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+  front-end:
+    image: nginx
+    container_name: front-end
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    volumes:
+      - "./front-end/www:/usr/share/nginx/html"
