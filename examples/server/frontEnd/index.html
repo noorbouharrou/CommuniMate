@@ -3,181 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Resizer & Text-to-Speech</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f9f9f9;
-    }
-    h1, h2 {
-      text-align: center;
-      color: #333;
-    }
-    .container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    textarea, input, button {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      font-size: 18px;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    img {
-      max-width: 100%;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-    }
-    audio {
-      width: 100%;
-      margin-top: 20px;
-    }
-    hr {
-      margin: 40px 0;
-      border: 0;
-      border-top: 1px solid #ddd;
-    }
-  </style>
+  <title>Communimate uploader</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <h1>Communimate uploader!</h1>
 
-  <h1>Image Resizer & Text-to-Speech</h1>
+  <div class="grid">
+    <div class="container" id="form1">
+      <form id="resizeForm1" enctype="multipart/form-data">
+        <label for="image1">Kies een afbeelding:</label>
+        <input type="file" id="image1" name="image" accept="image/*" required>
+        <img id="image1display" alt="Image">
+        <textarea id="textInput1" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage1" alt="Resized Image">
+      <audio id="audioPlayer1" controls></audio>
+    </div>
 
-  <!-- Image Resizer & Text-to-Speech Sections (for two) -->
-  <div class="container" id="form1">
-    <h2>Afbeelding Resizer 1</h2>
-    <form id="resizeForm1" enctype="multipart/form-data">
-      <label for="image1">Kies een afbeelding:</label>
-      <input type="file" id="image1" name="image" accept="image/*" required>
+    <div class="container" id="form2">
+      <form id="resizeForm2" enctype="multipart/form-data">
+        <label for="image2">Kies een afbeelding:</label>
+        <input type="file" id="image2" name="image" accept="image/*" required>
+        <img id="image2display" alt="Image">
+        <textarea id="textInput2" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage2" alt="Resized Image">
+      <audio id="audioPlayer2" controls></audio>
+    </div>
 
-      <textarea id="textInput1" placeholder="Voer hier de tekst in die je wilt laten voorlezen..." required></textarea>
-    </form>
+    <div class="container" id="form3">
+      <form id="resizeForm3" enctype="multipart/form-data">
+        <label for="image3">Kies een afbeelding:</label>
+        <input type="file" id="image3" name="image" accept="image/*" required>
+        <img id="image3display" alt="Image">
+        <textarea id="textInput3" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage3" alt="Resized Image">
+      <audio id="audioPlayer3" controls></audio>
+    </div>
 
-    <h3>Verwerkte Afbeelding:</h3>
-    <img id="resizedImage1" alt="Resized Image">
-    <audio id="audioPlayer1" controls></audio>
+    <div class="container" id="form4">
+      <form id="resizeForm4" enctype="multipart/form-data">
+        <label for="image4">Kies een afbeelding:</label>
+        <input type="file" id="image4" name="image" accept="image/*" required>
+        <img id="image4display" alt="Image">
+        <textarea id="textInput4" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage4" alt="Resized Image">
+      <audio id="audioPlayer4" controls></audio>
+    </div>
+
+    <div class="container" id="form5">
+      <form id="resizeForm5" enctype="multipart/form-data">
+        <label for="image5">Kies een afbeelding:</label>
+        <input type="file" id="image5" name="image" accept="image/*" required>
+        <img id="image5display" alt="Image">
+        <textarea id="textInput5" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage5" alt="Resized Image">
+      <audio id="audioPlayer5" controls></audio>
+    </div>
+
+    <div class="container" id="form6">
+      <form id="resizeForm6" enctype="multipart/form-data">
+        <label for="image6">Kies een afbeelding:</label>
+        <input type="file" id="image6" name="image" accept="image/*" required>
+        <img id="image6display" alt="Image">
+        <textarea id="textInput6" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage6" alt="Resized Image">
+      <audio id="audioPlayer6" controls></audio>
+    </div>
+
+    <div class="container" id="form7">
+      <form id="resizeForm7" enctype="multipart/form-data">
+        <label for="image7">Kies een afbeelding:</label>
+        <input type="file" id="image7" name="image" accept="image/*" required>
+        <img id="image7display" alt="Image">
+        <textarea id="textInput7" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage7" alt="Resized Image">
+      <audio id="audioPlayer7" controls></audio>
+    </div>
+
+    <div class="container" id="form8">
+      <form id="resizeForm8" enctype="multipart/form-data">
+        <label for="image8">Kies een afbeelding:</label>
+        <input type="file" id="image8" name="image" accept="image/*" required>
+        <img id="image8display" alt="Image">
+        <textarea id="textInput8" placeholder="Uitgesproken tekst..." required></textarea>
+      </form>
+      <img id="resizedImage8" alt="Resized Image">
+      <audio id="audioPlayer8" controls></audio>
+    </div>
   </div>
 
-  <div class="container" id="form2">
-    <h2>Afbeelding Resizer 2</h2>
-    <form id="resizeForm2" enctype="multipart/form-data">
-      <label for="image2">Kies een afbeelding:</label>
-      <input type="file" id="image2" name="image" accept="image/*" required>
-
-      <textarea id="textInput2" placeholder="Voer hier de tekst in die je wilt laten voorlezen..." required></textarea>
-    </form>
-
-    <h3>Verwerkte Afbeelding:</h3>
-    <img id="resizedImage2" alt="Resized Image">
-    <audio id="audioPlayer2" controls></audio>
+  <div class="actions">
+    <button id="processButton">Verwerk Alle Afbeeldingen & Spraak</button>
+    <button id="downloadZip">Download Alles als ZIP</button>
   </div>
 
-  <hr>
-
-  <button id="processButton">Verwerk Beide Afbeeldingen & Spraak</button>
-  <button id="downloadZip" style="display:none;">Download Alles als ZIP</button>
+  <script src="script.js"></script>
 
   <script>
-    let imageBlob1, audioBlob1, imageBlob2, audioBlob2;
-
-    async function processForm(imageId, textInputId, resizedImageId, audioPlayerId) {
-      const text = document.getElementById(textInputId).value;
-      if (!text) {
-        alert('Voer alstublieft tekst in.');
-        return;
-      }
-
-      const formData = new FormData();
-      const fileInput = document.getElementById(imageId);
-
-      formData.append('image', fileInput.files[0]);
-      formData.append('width', 240);
-      formData.append('height', 240);
-
-      try {
-        const imageResponse = await fetch('http://localhost:3002/resize', {
-          method: 'POST',
-          body: formData
-        });
-        const imageBlob = await imageResponse.blob();
-        const imageUrl = URL.createObjectURL(imageBlob);
-        document.getElementById(resizedImageId).src = imageUrl;
-
-        const ttsResponse = await fetch('http://localhost:3001/tts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: text, language: 'nl' })
-        });
-
-        const audioBlob = await ttsResponse.blob();
-        const audioUrl = URL.createObjectURL(audioBlob);
-        const audioPlayer = document.getElementById(audioPlayerId);
-        audioPlayer.src = audioUrl;
-
-        // Store the blobs for downloading later
-        if (imageId === 'image1') {
-          imageBlob1 = imageBlob;
-          audioBlob1 = audioBlob;
-        } else {
-          imageBlob2 = imageBlob;
-          audioBlob2 = audioBlob;
+    // JavaScript to display the image when a file is selected
+    function previewImage(inputId, imageId) {
+      const fileInput = document.getElementById(inputId);
+      const imagePreview = document.getElementById(imageId);
+      
+      // Initially hide the image
+      imagePreview.style.display = 'none';
+      
+      fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.onload = function() {
+              // Display the image once it has been successfully loaded
+              imagePreview.style.display = 'block';
+            };
+          };
+          reader.readAsDataURL(file);
         }
-
-      } catch (error) {
-        console.error('Er is een fout opgetreden:', error);
-      }
+      });
     }
 
-    document.getElementById('processButton').addEventListener('click', async function() {
-      await processForm('image1', 'textInput1', 'resizedImage1', 'audioPlayer1');
-      await processForm('image2', 'textInput2', 'resizedImage2', 'audioPlayer2');
+    // Call previewImage for each file input and corresponding image display
+    previewImage('image1', 'image1display');
+    previewImage('image2', 'image2display');
+    previewImage('image3', 'image3display');
+    previewImage('image4', 'image4display');
+    previewImage('image5', 'image5display');
+    previewImage('image6', 'image6display');
+    previewImage('image7', 'image7display');
+    previewImage('image8', 'image8display');
 
-      // Show the download button once both processes are complete
-      document.getElementById('downloadZip').style.display = 'block';
-    });
-
-    // Create and Download ZIP
-    document.getElementById('downloadZip').addEventListener('click', async function() {
-      if (!imageBlob1 || !audioBlob1 || !imageBlob2 || !audioBlob2) {
-        alert('Genereer eerst beide afbeeldingen en spraak voordat je kunt downloaden.');
-        return;
-      }
-
-      const zip = new JSZip();
-      zip.file("resized_image1_240x240.png", imageBlob1);
-      zip.file("generated_audio1.mp3", audioBlob1);
-      zip.file("resized_image2_240x240.png", imageBlob2);
-      zip.file("generated_audio2.mp3", audioBlob2);
-
-      const content = await zip.generateAsync({ type: "blob" });
-      const url = URL.createObjectURL(content);
-
-      // Create a download link
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'resized_images_and_audio.zip';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    });
   </script>
 </body>
 </html>

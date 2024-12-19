@@ -22,4 +22,4 @@ services:
       - "80:80"
     restart: unless-stopped
     volumes:
-      - "./frontEnd2:/usr/share/nginx/html"
+      - "./frontEnd:/usr/share/nginx/html"
