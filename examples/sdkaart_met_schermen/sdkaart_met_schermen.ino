@@ -10,7 +10,7 @@ PNG png;
 // HC4067 control pins connected to ESP32
 const int S0 = 32;                                // Channel selection pin S0 (can be any available GPIO on ESP32)
 const int S1 = 33;                                // Channel selection pin S1
-const int S2 = 25;                                // Channel selection pin S2
+const int S2 = 22;                                // Channel selection pin S2
 const int S3 = 26;                                // Channel selection pin S3
 const int muxControlPins[] = { S0, S1, S2, S3 };  // Array storing the control pins (S0-S3)
 const int pullUpLine = 13;                        // Pin for controlling pull-up resistor (used to select the displays)
