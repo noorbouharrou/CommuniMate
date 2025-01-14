@@ -147,7 +147,7 @@ function checkFilesForDownload() {
   const downloadButton = document.getElementById('downloadZip');
   let allFilesPresent = true;
 
-  // Check if all images and MP3 files exist
+  // Check if all images and WAV files exist
   for (let i = 1; i <= 8; i++) {
     if (!imageBlobs[i] || !audioBlobs[i]) {
       allFilesPresent = false;
@@ -171,7 +171,7 @@ document.getElementById('downloadZip').addEventListener('click', () => {
     
     // Check if an audio exists for this form
     if (audioBlobs[i]) {
-      zip.file(`audio${i}.mp3`, audioBlobs[i]); // Add the audio blob to the ZIP
+      zip.file(`audio${i}.wav`, audioBlobs[i]); // Add the audio blob to the ZIP
     }
   }
 
