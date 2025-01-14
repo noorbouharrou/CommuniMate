@@ -1,20 +1,23 @@
-# Gebruik een officiële Node.js runtime als basis
+# Use an official Node.js runtime as a base
 FROM node:18
 
-# Stel de werkdirectory in
+# Install additional tools (e.g., ffmpeg for audio processing)
+RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
+
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Kopieer de package.json en package-lock.json naar de container
+# Copy the package.json and package-lock.json to the container
 COPY package*.json ./
 
-# Installeer de benodigde afhankelijkheden
+# Install the necessary dependencies
 RUN npm install
 
-# Kopieer de rest van de applicatie naar de container
+# Copy the rest of the application into the container
 COPY . .
 
-# Stel de container in om op poort 3000 te luisteren
+# Expose port 3000
 EXPOSE 3000
 
-# Start de applicatie
+# Start the application
 CMD ["npm", "start"]
