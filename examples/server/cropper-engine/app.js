@@ -32,7 +32,7 @@ app.post('/resize', upload.single('image'), (req, res) => {
 
   const label = "Bottom text";
   const svg = `
-  <svg width="${width}" height="${height}" viewBox="0 0 ${height} ${height + 2}">
+  <svg width="${newWidth}" height="${newHeight}" viewBox="0 0 ${newHeight} ${newHeight + 2}">
     <!--this rect should have rounded corners-->
     <rect x="0" y="0" width="100%" height="100%" fill="#fff"/>
     <text x="50%" y="50%" text-anchor="middle" dy="0.25em" fill="#000">${label}</text>
