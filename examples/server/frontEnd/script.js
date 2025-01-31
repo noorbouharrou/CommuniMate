@@ -40,7 +40,7 @@ async function resizeImage(file, width, height) {
   const ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0, width, height);
 
-  return new Promise((resolve) => canvas.toBlob(resolve, 'image/png')); // Use PNG format
+  return new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg'));
 }
 
 async function generateSpeech(text) {
@@ -166,12 +166,12 @@ document.getElementById('downloadZip').addEventListener('click', () => {
   for (let i = 1; i <= 8; i++) {
     // Check if an image exists for this form
     if (imageBlobs[i]) {
-      zip.file(`image${i}.png`, imageBlobs[i]); // Save as PNG
+      zip.file(`image${i}.jpg`, imageBlobs[i]); // Add the image blob to the ZIP
     }
     
     // Check if an audio exists for this form
     if (audioBlobs[i]) {
-      zip.file(`audio${i}.wav`, audioBlobs[i]); // Save as WAV
+      zip.file(`audio${i}.wav`, audioBlobs[i]); // Add the audio blob to the ZIP
     }
   }
 
