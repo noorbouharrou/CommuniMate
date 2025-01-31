@@ -44,7 +44,7 @@ async function resizeImage(file, width, height) {
 }
 
 async function generateSpeech(text) {
-  const response = await fetch('http://145.24.223.94/:3001/tts', {
+  const response = await fetch('http://145.24.223.94/:3000/tts', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text: text, language: 'nl' })
@@ -85,7 +85,7 @@ async function handleImageSelection(event, resizedImageId, index) {
 
   try {
     // Send the image to the server to resize
-    const imageResponse = await fetch('http://145.24.223.94/:3002/resize', {
+    const imageResponse = await fetch('http://145.24.223.94/:3000/resize', {
       method: 'POST',
       body: formData
     });
