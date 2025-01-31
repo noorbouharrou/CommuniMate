@@ -40,7 +40,7 @@ async function resizeImage(file, width, height) {
   const ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0, width, height);
 
-  return new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+  return new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg'));
 }
 
 async function generateSpeech(text) {
@@ -77,14 +77,12 @@ async function handleImageSelection(event, resizedImageId, index) {
   const imageFile = fileInput.files[0];
   if (!imageFile) return;
 
-  // Prepare form data for the server request
   const formData = new FormData();
   formData.append('image', imageFile);
   formData.append('width', 240);
   formData.append('height', 240);
 
   try {
-    // Send the image to the server to resize
     const imageResponse = await fetch('http://cropper-engine:3000/resize', {
       method: 'POST',
       body: formData
@@ -92,14 +90,11 @@ async function handleImageSelection(event, resizedImageId, index) {
 
     if (!imageResponse.ok) throw new Error('Failed to resize image');
 
-    // Get the resized image as a blob
     const imageBlob = await imageResponse.blob();
     const imageUrl = URL.createObjectURL(imageBlob);
 
-    // Set the src for the resized image preview
     document.getElementById(resizedImageId).src = imageUrl;
 
-    // Draw the resized image on the canvas
     const img = new Image();
     img.src = imageUrl;
     img.onload = () => {
@@ -109,17 +104,16 @@ async function handleImageSelection(event, resizedImageId, index) {
       canvas.height = 240;
       ctx.drawImage(img, 0, 0, 240, 240);
 
-      // Optionally, if you want to use the canvas as an image:
-      const canvasImageBlob = canvas.toBlob((blob) => {
+      // Convert the canvas image to PNG format
+      canvas.toBlob((blob) => {
         imageBlobs[index] = blob; // Store the resized image blob
-      }, 'image/png');
+      }, 'image/png'); // Specify PNG format here
     };
 
   } catch (error) {
     console.error('Error processing image:', error);
   }
 
-  // Check if all files are present after image selection
   checkFilesForDownload();
 }
 
@@ -162,24 +156,20 @@ function checkFilesForDownload() {
 document.getElementById('downloadZip').addEventListener('click', () => {
   const zip = new JSZip();
 
-  // Loop over all 8 forms
   for (let i = 1; i <= 8; i++) {
-    // Check if an image exists for this form
     if (imageBlobs[i]) {
-      zip.file(`image${i}.png`, imageBlobs[i]); // Add the image blob to the ZIP
+      zip.file(`image${i}.png`, imageBlobs[i]); // Save as PNG
     }
     
-    // Check if an audio exists for this form
     if (audioBlobs[i]) {
-      zip.file(`audio${i}.wav`, audioBlobs[i]); // Add the audio blob to the ZIP
+      zip.file(`audio${i}.wav`, audioBlobs[i]);
     }
   }
 
-  // Generate the ZIP file as a blob and create a link to download it
   zip.generateAsync({ type: 'blob' }).then((content) => {
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(content);  // Create a downloadable URL
-    a.download = 'output.zip';  // Set the file name for the ZIP
-    a.click();  // Trigger the download
+    a.href = URL.createObjectURL(content);
+    a.download = 'output.zip';
+    a.click();
   });
 });
