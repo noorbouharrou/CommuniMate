@@ -32,17 +32,17 @@ app.post('/resize', upload.single('image'), (req, res) => {
 
   // Resize de afbeelding met Sharp
   sharp(req.file.buffer)
-    .resize(newWidth, newHeight) // Resize de afbeelding
-    .png()
-    .toBuffer()
-    .then((data) => {
-      res.set('Content-Type', 'image/png');
-      res.send(data); // Stuur de resized afbeelding terug
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error resizing image.');
-    });
+  .resize(newWidth, newHeight)
+  .toFormat('png') // Specify PNG format
+  .toBuffer()
+  .then((data) => {
+    res.set('Content-Type', 'image/png'); // Set the content type to PNG
+    res.send(data);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error resizing image.');
+  });
 });
 
 // Start de server
