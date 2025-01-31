@@ -33,7 +33,6 @@ app.post('/resize', upload.single('image'), (req, res) => {
   // Resize de afbeelding met Sharp
   sharp(req.file.buffer)
     .resize(newWidth, newHeight) // Resize de afbeelding
-    .png()
     .toBuffer()
     .then((data) => {
       res.set('Content-Type', 'image/png');
