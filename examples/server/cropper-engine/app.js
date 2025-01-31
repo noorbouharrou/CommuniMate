@@ -10,10 +10,6 @@ const PORT = 3000;
 
 app.use(cors());
 
-
-
-const svg_buffer = Buffer.from(svg);
-
 // Stel de opslag in voor Multer
 const storage = multer.memoryStorage(); // Sla bestanden tijdelijk in geheugen op
 const upload = multer({ storage: storage });
@@ -39,6 +35,7 @@ app.post('/resize', upload.single('image'), (req, res) => {
   </svg>
   `;
   
+  const svg_buffer = Buffer.from(svg);
 
   if (isNaN(newWidth) || isNaN(newHeight)) {
     return res.status(400).send('Invalid width or height.');
