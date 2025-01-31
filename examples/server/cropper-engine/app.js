@@ -12,7 +12,7 @@ app.use(cors());
 
 
 
-const svg_buffer = Buffer.from(svg)
+const svg_buffer = Buffer.from(svg);
 
 // Stel de opslag in voor Multer
 const storage = multer.memoryStorage(); // Sla bestanden tijdelijk in geheugen op
