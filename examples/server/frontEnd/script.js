@@ -40,11 +40,11 @@ async function resizeImage(file, width, height) {
   const ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0, width, height);
 
-  return new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg'));
+  return new Promise((resolve) => canvas.toBlob(resolve, 'image/png')); // Save as PNG
 }
 
 async function generateSpeech(text) {
-  const response = await fetch('http://tts-engine:3000/tts', {
+  const response = await fetch('http://localhost:3001/tts', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text: text, language: 'nl' })
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resizedImageId = `resizedImage${i}`;
 
     // Add event listener for image selection
-    imageInput.addEventListener('change', (event) => 
+    imageInput.addEventListener('change', (event) =>
       handleImageSelection(event, resizedImageId, i)
     );
 
@@ -77,15 +77,19 @@ async function handleImageSelection(event, resizedImageId, index) {
   const imageFile = fileInput.files[0];
   if (!imageFile) return;
 
+  // Get the label from the corresponding input field
+  const label = document.getElementById(`labelInput${index}`).value || 'Default Label';
+
   // Prepare form data for the server request
   const formData = new FormData();
   formData.append('image', imageFile);
   formData.append('width', 240);
   formData.append('height', 240);
+  formData.append('label', label); // Add label to the form data
 
   try {
-    // Send the image to the server to resize
-    const imageResponse = await fetch('http://cropper-engine:3000/resize', {
+    // Send the image and label to the server to resize
+    const imageResponse = await fetch('http://localhost:3002/resize', {
       method: 'POST',
       body: formData
     });
@@ -99,7 +103,7 @@ async function handleImageSelection(event, resizedImageId, index) {
     // Set the src for the resized image preview
     document.getElementById(resizedImageId).src = imageUrl;
 
-    // Draw the resized image on the canvas
+    // Optionally, if you want to use the canvas as an image:
     const img = new Image();
     img.src = imageUrl;
     img.onload = () => {
@@ -112,7 +116,7 @@ async function handleImageSelection(event, resizedImageId, index) {
       // Optionally, if you want to use the canvas as an image:
       const canvasImageBlob = canvas.toBlob((blob) => {
         imageBlobs[index] = blob; // Store the resized image blob
-      }, 'image/jpeg');
+      }, 'image/png'); // Store as PNG
     };
 
   } catch (error) {
@@ -166,12 +170,12 @@ document.getElementById('downloadZip').addEventListener('click', () => {
   for (let i = 1; i <= 8; i++) {
     // Check if an image exists for this form
     if (imageBlobs[i]) {
-      zip.file(`image${i}.jpg`, imageBlobs[i]); // Add the image blob to the ZIP
+      zip.file(`image${i}.png`, imageBlobs[i]); // Store as PNG
     }
-    
+
     // Check if an audio exists for this form
     if (audioBlobs[i]) {
-      zip.file(`audio${i}.wav`, audioBlobs[i]); // Add the audio blob to the ZIP
+      zip.file(`audio${i}.wav`, audioBlobs[i]); // Store audio as WAV
     }
   }
 
